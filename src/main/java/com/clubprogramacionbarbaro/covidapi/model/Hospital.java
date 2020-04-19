@@ -2,6 +2,7 @@ package com.clubprogramacionbarbaro.covidapi.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,14 +24,25 @@ public class Hospital {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "hospital_id")
 	private Integer hospitalId;
 
+	@Column(name = "nombre")
 	private String nombre;
+	
+	@Column(name = "latitud")
 	private Double latitud;
+	
+	@Column(name = "longitud")
 	private Double longitud;
+	
+	@Column(name = "tipo_institucion")
 	private String tipoInstitucion;
+	
+	@Column(name = "domicilio")
 	private String domicilio;
 
+	@Column(name = "fecha_creacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime fechaCreacion;
 
