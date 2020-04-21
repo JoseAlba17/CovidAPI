@@ -1,6 +1,6 @@
 package com.clubprogramacionbarbaro.covidapi.dao;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,7 +24,10 @@ public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
 	List<Hospital> findByDomicilio(String domicilio);
 
 	// SELECT * FROM hospital WHERE fechaCreacion...
-	List<Hospital> findByFechaCreacion(LocalDateTime fechaCreacion);
+	List<Hospital> findByFechaCreacion(Date fechaCreacion);
+	
+	// SELECT * FROM hospital WHERE fechaActualizacion...
+	List<Hospital> findByFechaActualizacion(Date fechaActualizacion);
 
 	// SELECT * FROM hospital WHERE latitud AND logitud...
 	List<Hospital> findByLatitudAndLongitud(Double latitud, Double longitud);

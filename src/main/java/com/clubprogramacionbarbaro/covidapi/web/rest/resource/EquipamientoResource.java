@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clubprogramacionbarbaro.covidapi.model.Equipamiento;
@@ -21,42 +22,42 @@ import com.clubprogramacionbarbaro.covidapi.web.rest.util.EquipamientoConstants;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping(EquipamientoConstants.GLOBAL_CONTEXT_PATH)
+@RequestMapping(path = EquipamientoConstants.GLOBAL_CONTEXT_PATH)
 @AllArgsConstructor
 public class EquipamientoResource {
 
 	private EquipamientoService equipamientoService;
 
-	@GetMapping(EquipamientoConstants.FIND_ALL_EQUIPAMIENTO)
+	@GetMapping(path = EquipamientoConstants.FIND_ALL_EQUIPAMIENTO)
 	public ResponseEntity<List<Equipamiento>> findAllEquipamientos() {
 		List<Equipamiento> equipamientos = equipamientoService.findAllEquipamiento();
 
 		return new ResponseEntity<>(equipamientos, HttpStatus.OK);
 	}
 
-	@GetMapping(EquipamientoConstants.FIND_EQUIPAMIENTO_BY_ID + "/{Id}")
-	public ResponseEntity<Equipamiento> findEquipamientoById(@PathParam("Id") Integer equipamientoId) {
+	@GetMapping(path = EquipamientoConstants.FIND_EQUIPAMIENTO_BY_ID)
+	public ResponseEntity<Equipamiento> findEquipamientoById(@RequestParam("Id") Integer equipamientoId) {
 		Equipamiento equipamiento = equipamientoService.findEquipamientoById(equipamientoId);
 
 		return new ResponseEntity<>(equipamiento, HttpStatus.FOUND);
 	}
 
-	@PostMapping(EquipamientoConstants.SAVE_EQUIPAMIENTO)
+	@PostMapping(path = EquipamientoConstants.SAVE_EQUIPAMIENTO)
 	public ResponseEntity<Equipamiento> saveEquipamiento(@RequestBody Equipamiento equipamientoRequest) {
 		Equipamiento equipamientoResponse = equipamientoService.saveEquipamiento(equipamientoRequest);
 
 		return new ResponseEntity<>(equipamientoResponse, HttpStatus.CREATED);
 	}
 	
-	@PutMapping(EquipamientoConstants.UPDATE_EQUIPAMIENTO + "/{Id}")
-	public ResponseEntity<Equipamiento> updateEquipamiento(@PathParam("Id") Integer equipamientoId, @RequestBody Equipamiento equipamientoRequest){
+	@PutMapping(path = EquipamientoConstants.UPDATE_EQUIPAMIENTO)
+	public ResponseEntity<Equipamiento> updateEquipamiento(@RequestParam("Id") Integer equipamientoId, @RequestBody Equipamiento equipamientoRequest){
 		Equipamiento EquipamientoResponse = equipamientoService.updateEquipamiento(equipamientoId, equipamientoRequest);
 
-		return new ResponseEntity<>(EquipamientoResponse, HttpStatus.OK);
+		return new ResponseEntity<>(EquipamientoResponse, HttpStatus.ACCEPTED);
 	}
 	
-	@DeleteMapping(EquipamientoConstants.DELETE_EQUIPAMIENTO_BY_ID + "/{Id}")
-	public ResponseEntity<Equipamiento> deleteEquipamientoById(@PathParam("Id") Integer equipamientoId) {
+	@DeleteMapping(path = EquipamientoConstants.DELETE_EQUIPAMIENTO_BY_ID)
+	public ResponseEntity<Equipamiento> deleteEquipamientoById(@RequestParam("Id") Integer equipamientoId) {
 		equipamientoService.deleteEquipamientoById(equipamientoId);
 
 		return new ResponseEntity<>(HttpStatus.OK);

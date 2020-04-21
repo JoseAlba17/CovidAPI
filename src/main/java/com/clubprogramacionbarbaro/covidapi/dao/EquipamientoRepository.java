@@ -2,12 +2,14 @@ package com.clubprogramacionbarbaro.covidapi.dao;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.clubprogramacionbarbaro.covidapi.model.Equipamiento;
+import com.clubprogramacionbarbaro.covidapi.model.Hospital;
 
 @Repository
 public interface EquipamientoRepository extends JpaRepository<Equipamiento, Integer> {
@@ -26,6 +28,9 @@ public interface EquipamientoRepository extends JpaRepository<Equipamiento, Inte
 	
 	// SELECT * FROM equipamiento WHERE fechaVencimiento...
 	List<Equipamiento> findByFechaVencimiento(LocalDate fechaVencimiento);
+	
+	// SELECT * FROM hospital WHERE fechaActualizacion...
+	List<Hospital> findByFechaActualizacion(Date fechaActualizacion);
 
 	// SELECT * FROM equipamiento WHERE fechaCreacion...
 	List<Equipamiento> findByFechaCreacion(LocalDateTime fechaCreacion);

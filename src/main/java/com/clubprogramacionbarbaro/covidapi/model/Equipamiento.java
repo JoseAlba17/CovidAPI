@@ -1,7 +1,6 @@
 package com.clubprogramacionbarbaro.covidapi.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,23 +20,28 @@ public class Equipamiento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "equipamiento_id")
+	@Column(name = "equipamiento_id", updatable = false, nullable = false)
 	private Integer equipamientoId;
-	
+
 	@Column(name = "nombre")
 	private String nombre;
-	
+
 	@Column(name = "descripcion")
 	private String descripcion;
-	
+
 	@Column(name = "cantidad")
 	private Integer cantidad;
-	
+
 	@Column(name = "fecha_vencimiento")
-	private LocalDate fechaVencimiento;
+	@Temporal(TemporalType.DATE)
+	private Date fechaVencimiento;
 	
+	@Column(name = "fecha_actualizacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaActualizacion;
+
 	@Column(name = "fecha_creacion")
 	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime fechaCreacion;
+	private Date fechaCreacion;
 
 }
