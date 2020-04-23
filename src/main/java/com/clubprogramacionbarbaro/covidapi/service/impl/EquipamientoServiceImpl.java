@@ -31,16 +31,14 @@ public class EquipamientoServiceImpl implements EquipamientoService {
 
 	@Override
 	public Equipamiento saveEquipamiento(Equipamiento equipamiento) {
-		Date fechaActual = new Date();
-		equipamiento.setFechaCreacion(fechaActual);
+		equipamiento.setFechaCreacion(new Date());
 		return repository.save(equipamiento);
 	}
 
 	@Override
 	public Equipamiento updateEquipamiento(Integer equipamientoId, Equipamiento equipamiento) {
 		
-		Date fechaActual = new Date();
-		equipamiento.setFechaActualizacion(fechaActual);
+		equipamiento.setFechaActualizacion(new Date());
 		
 		Equipamiento equipamientoDB = findEquipamientoById(equipamientoId);
 		equipamientoDB.setNombre(equipamiento.getNombre());

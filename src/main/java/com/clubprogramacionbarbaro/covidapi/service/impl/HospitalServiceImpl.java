@@ -31,16 +31,14 @@ public class HospitalServiceImpl implements HospitalService {
 
 	@Override
 	public Hospital saveHospital(Hospital hospital) {
-		Date fechaActual = new Date();
-		hospital.setFechaCreacion(fechaActual);
+		hospital.setFechaCreacion(new Date());
 		return repository.save(hospital);
 	}
 
 	@Override
 	public Hospital updateHospital(Integer hospitalId, Hospital hospital) {
 		
-		Date fechaActual = new Date();
-		hospital.setFechaActualizacion(fechaActual);
+		hospital.setFechaActualizacion(new Date());
 		
 		Hospital hospitalDB = findHospitalById(hospitalId);
 		hospitalDB.setNombre(hospital.getNombre());
