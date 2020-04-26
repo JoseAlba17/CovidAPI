@@ -18,7 +18,7 @@ public class HospitalServiceImpl implements HospitalService {
 	private HospitalRepository repository;
 
 	@Override
-	public List<Hospital> findAllHospitals() {
+	public List<Hospital> findAllHospital() {
 		
 		return repository.findAll();
 	}

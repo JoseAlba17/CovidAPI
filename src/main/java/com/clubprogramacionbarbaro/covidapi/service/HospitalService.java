@@ -6,7 +6,7 @@ import com.clubprogramacionbarbaro.covidapi.model.Hospital;
 
 public interface HospitalService {
 
-	List<Hospital> findAllHospitals();
+	List<Hospital> findAllHospital();
 
 	Hospital findHospitalById(Integer hospitalId);
 
