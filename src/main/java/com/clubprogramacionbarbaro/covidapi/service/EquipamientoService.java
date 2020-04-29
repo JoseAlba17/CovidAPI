@@ -14,6 +14,8 @@ public interface EquipamientoService {
 
 	Equipamiento updateEquipamiento(Integer equipamientoId, Equipamiento equipamiento);
 
+	Equipamiento addHospitalToEquipamiento(Integer equipamientoId, Integer hospitalId);
+	
 	void deleteEquipamientoById(Integer equipamientoId);
 
 }

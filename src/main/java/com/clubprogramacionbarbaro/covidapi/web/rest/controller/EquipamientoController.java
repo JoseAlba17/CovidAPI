@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clubprogramacionbarbaro.covidapi.model.Equipamiento;
+import com.clubprogramacionbarbaro.covidapi.model.Hospital;
 import com.clubprogramacionbarbaro.covidapi.service.EquipamientoService;
 
 import lombok.AllArgsConstructor;
@@ -42,16 +43,23 @@ public class EquipamientoController {
 
 		return new ResponseEntity<>(service.saveEquipamiento(equipamiento), HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<Equipamiento> updateEquipamiento(@PathVariable("id") Integer id, @RequestBody Equipamiento equipamiento){
+	public ResponseEntity<Equipamiento> updateEquipamiento(@PathVariable("id") Integer id,
+			@RequestBody Equipamiento equipamiento) {
 
 		return new ResponseEntity<>(service.updateEquipamiento(id, equipamiento), HttpStatus.ACCEPTED);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Equipamiento> deleteEquipamiento(@PathVariable("id") Integer id) {
 		service.deleteEquipamientoById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@PostMapping("/{id}/hospitales")
+	public ResponseEntity<Equipamiento> addHospitalToEquipamiento(@PathVariable("id") Integer equipamientoId,
+			@RequestBody Hospital hospital) {
+		return new ResponseEntity<>(service.addHospitalToEquipamiento(equipamientoId, hospital.getHospitalId()), HttpStatus.OK);
 	}
 }

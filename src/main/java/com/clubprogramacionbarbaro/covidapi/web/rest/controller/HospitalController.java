@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.clubprogramacionbarbaro.covidapi.model.Equipamiento;
 import com.clubprogramacionbarbaro.covidapi.model.Hospital;
 import com.clubprogramacionbarbaro.covidapi.service.HospitalService;
 
@@ -50,8 +51,13 @@ public class HospitalController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Hospital> deleteHospitalById(@PathVariable("Id") Integer id) {
+	public ResponseEntity<Hospital> deleteHospitalById(@PathVariable("id") Integer id) {
 		service.deleteHospitalById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	@GetMapping("{id}/equipamientos")
+	public ResponseEntity<List<Equipamiento>> findAllEquipamientoHospitalById(@PathVariable("id") Integer hospitalId){
+		return new ResponseEntity<>(service.findHospitalById(hospitalId).getEquipamientos(), HttpStatus.OK);
 	}
 }

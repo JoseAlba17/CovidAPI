@@ -21,6 +21,8 @@ public class Equipamiento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer equipamientoId;
+	@Column(nullable = true)
+	private Integer hospitalId; //Llave foránea
 	private String nombre;
 	private String descripcion;
 	private Integer cantidad;

@@ -55,4 +55,14 @@ public class EquipamientoServiceImpl implements EquipamientoService {
 
 		repository.deleteById(equipamientoId);
 	}
+
+	@Override
+	public Equipamiento addHospitalToEquipamiento(Integer equipamientoId, Integer hospitalId) {
+		Equipamiento equipamiento = findEquipamientoById(equipamientoId);
+		equipamiento.setHospitalId(hospitalId);
+		equipamiento.setFechaActualizacion(new Date());
+		return repository.save(equipamiento);
+		
+	}
+
 }
