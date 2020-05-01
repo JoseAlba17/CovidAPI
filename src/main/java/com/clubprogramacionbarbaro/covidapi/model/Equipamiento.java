@@ -30,24 +30,17 @@ public class Equipamiento {
 	private Integer equipamientoId;
 	
 	@Column(nullable = true)
-	@Positive
 	private Integer hospitalId; //Llave foránea
 	
-	@Size(min= 15, message="Nombre should have at least 15 characters")
-	@ApiModelProperty(notes="Nombre should have at least 15 characters")
+	@ApiModelProperty(notes="Should have at least 15 characters")
 	private String nombre;
 	
-	@Size(min= 15, message="Descripcion should have at least 15 characters")
-	@ApiModelProperty(notes="Descripcion should have at least 15 characters")
+	@ApiModelProperty(notes="Should have at least 15 characters")
 	private String descripcion;
 	
-	@Positive
-	@NotBlank
 	@ApiModelProperty(notes="Cantidad should have at least 15 characters")
 	private Integer cantidad;
 	
-	@Future
-	@NotBlank
 	@Temporal(TemporalType.DATE)
 	@ApiModelProperty(notes="fechaVencimiento should be a future date")
 	private Date fechaVencimiento;

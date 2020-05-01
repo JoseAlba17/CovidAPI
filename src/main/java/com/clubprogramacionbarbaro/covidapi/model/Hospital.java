@@ -31,24 +31,20 @@ public class Hospital {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer hospitalId;
 	
-	@NotBlank
-	@Size(min= 15, message="Nombre should have at least 15 characters")
 	@ApiModelProperty(notes="Nombre should have at least 15 characters")
 	private String nombre;
 	
-	@NotBlank
+	
 	@ApiModelProperty(notes="latitud should not be blank")
 	private Double latitud;
 	
-	@NotBlank
+	
 	@ApiModelProperty(notes="longitud should not be blank")
 	private Double longitud;
 	
-	@Size(min= 15, message="tipoInstitucion should have at least 15 characters")
 	@ApiModelProperty(notes="tipoInstitucion should have at least 15 characters")
 	private String tipoInstitucion;
 	
-	@Size(min= 15, message="Domicilio should have at least 15 characters")
 	@ApiModelProperty(notes="Domicilio should have at least 15 characters")
 	private String domicilio;
 
