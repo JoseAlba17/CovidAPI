@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
 	private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<String>(
-			Arrays.asList("application/json", "application/xml"));
+			Arrays.asList("application/json"/*, "application/xml"*/));
 
 	private static Contact DEFAULT_CONTACT = new Contact("José María Alba", "", "jose.alba17@gmail.com");
 
