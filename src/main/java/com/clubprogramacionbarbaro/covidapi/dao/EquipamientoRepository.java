@@ -30,7 +30,7 @@ public interface EquipamientoRepository extends JpaRepository<Equipamiento, Inte
 	List<Equipamiento> findByFechaVencimiento(LocalDate fechaVencimiento);
 	
 	// SELECT * FROM hospital WHERE fechaActualizacion...
-	List<Hospital> findByFechaActualizacion(Date fechaActualizacion);
+	List<Equipamiento> findByFechaActualizacion(Date fechaActualizacion);
 
 	// SELECT * FROM equipamiento WHERE fechaCreacion...
 	List<Equipamiento> findByFechaCreacion(LocalDateTime fechaCreacion);
