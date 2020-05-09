@@ -35,13 +35,20 @@ public class AutenticationController {
 			Calendar calendar = Calendar.getInstance();
 			calendar.add(Calendar.HOUR, 1);
 
-			String jwt = Jwts.builder().setSubject(usuario.getEmail()).claim("role", "user")
-					.setExpiration(calendar.getTime()).signWith(SignatureAlgorithm.HS256, "12345678").compact();
+			String jwt = Jwts.builder()
+					.setSubject(usuario.getEmail())
+					.claim("role", "user")
+					.setExpiration(calendar.getTime())
+					.signWith(SignatureAlgorithm.HS256, "12345678")
+					.compact();
+			
 			TokenDTO tokenDTO = new TokenDTO(jwt);
 			return new ResponseEntity<>(tokenDTO, HttpStatus.OK);
 		} else {
 			MessageDTO messageDTO = new MessageDTO("error", "El usuario o la contraseña son incorrectos");
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(messageDTO);
+			return ResponseEntity
+					.status(HttpStatus.UNAUTHORIZED)
+					.body(messageDTO);
 		}
 	}
 }

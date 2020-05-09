@@ -1,5 +1,7 @@
 package com.clubprogramacionbarbaro.covidapi.error;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolationException;
 
@@ -18,6 +20,11 @@ public class MyGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(ConstraintViolationException.class)
 	public void handleConstraintViolationException(HttpServletResponse response) {
-		//response.
+		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+	}
+	
+	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+	public void handleSQLIntegrityConstraintViolationException(HttpServletResponse response) {
+		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 	}
 }
